@@ -1,67 +1,57 @@
 package page;
 
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ApplicationUtils;
 import utils.Config;
 
 public class CheckoutPage {
-    WebDriverWait wait;
     private WebDriver driver;
+    private ApplicationUtils applicationUtils;
 
-    @AndroidFindBy(accessibility = "test-First Name")
-    private WebElement firstNameField;
+    private final By firstNameField = By.xpath("//android.widget.EditText[@content-desc='test-First Name']");
+    private final By lastNameField = By.xpath("//android.widget.EditText[@content-desc='test-Last Name']");
+    private final By zipCodeField = By.xpath("//android.widget.EditText[@content-desc='test-Zip/Postal Code']");
+    private final By continueButton = By.xpath("//android.view.ViewGroup[@content-desc='test-CONTINUE']");
+    private final By finishButton = By.xpath("//android.view.ViewGroup[@content-desc='test-FINISH']");
+    private final By completionMessage = By.xpath("//android.widget.TextView[@text='CHECKOUT: COMPLETE!']");
 
-    @AndroidFindBy(accessibility = "test-Last Name")
-    private WebElement lastNameField;
-
-    @AndroidFindBy(accessibility = "test-Zip/Postal Code")
-    private WebElement zipCodeField;
-
-    @AndroidFindBy(accessibility = "test-CONTINUE")
-    private WebElement continueButton;
-
-    @AndroidFindBy(accessibility = "test-FINISH")
-    private WebElement finishButton;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='CHECKOUT: COMPLETE!']")
-    private WebElement completionMessage;
-
+    @SuppressWarnings("rawtypes")
     public CheckoutPage() {
         this.driver = Config.getDriver();
-        wait = new WebDriverWait(this.driver, 15);
+        this.applicationUtils = new ApplicationUtils((AppiumDriver) driver);
     }
 
     public void enterFirstName(String firstName) {
-        wait.until(ExpectedConditions.elementToBeClickable(firstNameField)).sendKeys(firstName);
+        applicationUtils.enterValueInTextBox(firstName, firstNameField);
     }
 
     public void enterLastName(String lastName) {
-        lastNameField.sendKeys(lastName);
+        applicationUtils.enterValueInTextBox(lastName, lastNameField);
     }
 
     public void enterZipCode(String zipCode) {
-        zipCodeField.sendKeys(zipCode);
+        applicationUtils.enterValueInTextBox(zipCode, zipCodeField);
     }
 
     public void clickContinue() {
-        continueButton.click();
+        applicationUtils.tapElement(continueButton, 15L);
     }
 
     public void clickFinish() {
-        wait.until(ExpectedConditions.elementToBeClickable(finishButton)).click();
+        applicationUtils.tapElement(finishButton, 15L);
     }
 
     public boolean isOrderComplete() {
-        return wait.until(ExpectedConditions.visibilityOf(completionMessage)).isDisplayed();
+        return applicationUtils.getElementIsDisplayed(completionMessage);
     }
 
     public void enterCheckoutInfo(String firstName, String lastName, String zipCode) {
         enterFirstName(firstName);
         enterLastName(lastName);
         enterZipCode(zipCode);
+        applicationUtils.hideKeyboard();
         clickContinue();
     }
 }

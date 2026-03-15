@@ -9,6 +9,11 @@ import page.CheckoutPage;
 import page.LoginPage;
 import page.ProductsPage;
 
+import io.cucumber.datatable.DataTable;
+import org.testng.Assert;
+import java.util.List;
+import java.util.Map;
+
 public class PurchaseStep {
     LoginPage lp = new LoginPage();
     ProductsPage productsPage = new ProductsPage();
@@ -17,7 +22,7 @@ public class PurchaseStep {
 
     @Given("I am on the login screen")
     public void i_am_on_the_login_screen() {
-        lp.isLoginScreenDisplayed();
+        Assert.assertTrue(lp.isLoginScreenDisplayed(), "Login screen is not displayed!");
     }
 
     @And("I login with username {string} and password {string}")
@@ -27,13 +32,7 @@ public class PurchaseStep {
 
     @When("I add {string} to cart")
     public void iAddToCart(String productName) {
-        if ("Sauce Labs Backpack".equals(productName)) {
-            productsPage.addBackpack();
-        } else if ("Sauce Labs Bike Light".equals(productName)) {
-            productsPage.addBikeLight();
-        } else {
-            throw new IllegalArgumentException("Unsupported product: " + productName);
-        }
+        productsPage.addProductToCart(productName);
     }
 
     @And("I go to cart")
@@ -46,9 +45,22 @@ public class PurchaseStep {
         checkoutPage = cartPage.proceedToCheckout();
     }
 
-    @Then("I should see the Homepage")
-    public void iShouldSeeTheHomepage() {
-        lp.isProductsTitleDisplayed();
-        lp.isSwagLabsLogoDisplayed();
+    @And("I enter checkout information:")
+    public void iEnterCheckoutInformation(DataTable dataTable) {
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+        String firstName = data.get(0).get("firstName");
+        String lastName = data.get(0).get("LastName");
+        String zipCode = data.get(0).get("ZipCode");
+        checkoutPage.enterCheckoutInfo(firstName, lastName, zipCode);
+    }
+
+    @And("I complete the checkout")
+    public void iCompleteTheCheckout() {
+        checkoutPage.clickFinish();
+    }
+
+    @Then("I should see the order completion message")
+    public void iShouldSeeTheOrderCompletionMessage() {
+        Assert.assertTrue(checkoutPage.isOrderComplete(), "Order completion message not displayed!");
     }
 }

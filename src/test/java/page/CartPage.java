@@ -1,26 +1,25 @@
 package page;
 
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ApplicationUtils;
 import utils.Config;
 
 public class CartPage {
-    WebDriverWait wait;
     private WebDriver driver;
+    private ApplicationUtils applicationUtils;
 
-    @AndroidFindBy(accessibility = "test-CHECKOUT")
-    private WebElement checkoutButton;
+    private final By checkoutButton = By.xpath("//android.view.ViewGroup[@content-desc='test-CHECKOUT']");
 
+    @SuppressWarnings("rawtypes")
     public CartPage() {
         this.driver = Config.getDriver();
-        wait = new WebDriverWait(this.driver, 15);
+        this.applicationUtils = new ApplicationUtils((AppiumDriver) driver);
     }
 
     public CheckoutPage proceedToCheckout() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+        applicationUtils.tapElement(checkoutButton, 15L);
         return new CheckoutPage();
     }
 }

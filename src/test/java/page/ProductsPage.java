@@ -1,40 +1,34 @@
 package page;
 
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ApplicationUtils;
 import utils.Config;
 
 public class ProductsPage {
-    WebDriverWait wait;
     private WebDriver driver;
+    private ApplicationUtils applicationUtils;
 
-    @AndroidFindBy(xpath = "(//android.view.ViewGroup[@content-desc='test-ADD TO CART'])[1]")
-    private WebElement addBackpackToCart;
+    private final By cartIcon = By.xpath("//android.view.ViewGroup[@content-desc='test-Cart']");
 
-    @AndroidFindBy(xpath = "(//android.view.ViewGroup[@content-desc='test-ADD TO CART'])[2]")
-    private WebElement addBikeLightToCart;
-
-    @AndroidFindBy(accessibility = "test-Cart")
-    private WebElement cartIcon;
-
+    @SuppressWarnings("rawtypes")
     public ProductsPage() {
         this.driver = Config.getDriver();
-        wait = new WebDriverWait(driver, 15);
+        this.applicationUtils = new ApplicationUtils((AppiumDriver) driver);
     }
 
-    public void addBackpack() {
-        wait.until(ExpectedConditions.elementToBeClickable(addBackpackToCart)).click();
-    }
-
-    public void addBikeLight() {
-        wait.until(ExpectedConditions.elementToBeClickable(addBikeLightToCart)).click();
+    public void addProductToCart(String productName) {
+        // Scroll to the product text first to ensure it's in view
+        applicationUtils.scrollToText(productName);
+        
+        // Use a robust locator that finds the ADD TO CART button within the container of the specific product
+        String xpath = String.format("//android.view.ViewGroup[@content-desc='test-Item container' and .//android.widget.TextView[@text='%s']]//android.view.ViewGroup[@content-desc='test-ADD TO CART']", productName);
+        applicationUtils.tapElement(By.xpath(xpath), 15L);
     }
 
     public CartPage goToCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
+        applicationUtils.tapElement(cartIcon, 15L);
         return new CartPage();
     }
 }
