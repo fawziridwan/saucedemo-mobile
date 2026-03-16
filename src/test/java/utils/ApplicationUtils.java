@@ -116,8 +116,16 @@ public class ApplicationUtils {
      */
     public void scrollToText(String text) {
         try {
-            driver.findElement(io.appium.java_client.MobileBy.AndroidUIAutomator(
-                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + text + "\").instance(0))"));
+            if (Config.getPlatformName().equalsIgnoreCase("android")) {
+                driver.findElement(io.appium.java_client.MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + text + "\").instance(0))"));
+            } else {
+                // iOS scroll logic (using mobile: scroll or predicates)
+                java.util.HashMap<String, String> scrollObject = new java.util.HashMap<>();
+                scrollObject.put("direction", "down");
+                scrollObject.put("name", text);
+                driver.executeScript("mobile: scroll", scrollObject);
+            }
         } catch (Exception e) {
             log.warn("Failed to scroll to text: {}", text);
         }

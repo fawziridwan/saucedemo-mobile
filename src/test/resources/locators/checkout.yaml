@@ -1,6 +1,18 @@
-firstNameField: "//android.widget.EditText[@content-desc='test-First Name']"
-lastNameField: "//android.widget.EditText[@content-desc='test-Last Name']"
-zipCodeField: "//android.widget.EditText[@content-desc='test-Zip/Postal Code']"
-continueButton: "//android.view.ViewGroup[@content-desc='test-CONTINUE']"
-finishButton: "//android.view.ViewGroup[@content-desc='test-FINISH']"
-completionMessage: "//android.widget.TextView[@text='CHECKOUT: COMPLETE!']"
+firstNameField:
+  android: "//android.widget.EditText[@content-desc='test-First Name']"
+  ios: "//XCUIElementTypeTextField[@name='test-First Name']"
+lastNameField:
+  android: "//android.widget.EditText[@content-desc='test-Last Name']"
+  ios: "//XCUIElementTypeTextField[@name='test-Last Name']"
+zipCodeField:
+  android: "//android.widget.EditText[@content-desc='test-Zip/Postal Code']"
+  ios: "//XCUIElementTypeTextField[@name='test-Zip/Postal Code']"
+continueButton:
+  android: "//android.view.ViewGroup[@content-desc='test-CONTINUE']"
+  ios: "//XCUIElementTypeButton[@name='test-CONTINUE']"
+finishButton:
+  android: "//android.view.ViewGroup[@content-desc='test-FINISH']"
+  ios: "//XCUIElementTypeButton[@name='test-FINISH']"
+completionMessage:
+  android: "//android.widget.TextView[@text='CHECKOUT: COMPLETE!']"
+  ios: "//XCUIElementTypeStaticText[@name='CHECKOUT: COMPLETE!']"

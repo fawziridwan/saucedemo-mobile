@@ -1,2 +1,6 @@
-cartIcon: "//android.view.ViewGroup[@content-desc='test-Cart']"
-addToCartTemplate: "//android.view.ViewGroup[@content-desc='test-Item container' and .//android.widget.TextView[@text='%s']]//android.view.ViewGroup[@content-desc='test-ADD TO CART']"
+cartIcon:
+  android: "//android.view.ViewGroup[@content-desc='test-Cart']"
+  ios: "//XCUIElementTypeButton[@name='test-Cart']"
+addToCartTemplate:
+  android: "//android.view.ViewGroup[@content-desc='test-Item container' and .//android.widget.TextView[@text='%s']]//android.view.ViewGroup[@content-desc='test-ADD TO CART']"
+  ios: "//XCUIElementTypeOther[@name='test-Item container' and .//XCUIElementTypeStaticText[@name='%s']]//XCUIElementTypeButton[@name='test-ADD TO CART']"

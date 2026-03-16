@@ -39,32 +39,30 @@ public class YamlReader {
     public static String getLocatorValue(String key) {
         String[] keys = key.split("\\.");
         Map<String, Object> currentMap = locators;
-        String locatorValue = "";
+        Object value = null;
 
         for (int i = 0; i < keys.length; i++) {
-            Object value = currentMap.get(keys[i]);
-            if (i == keys.length - 1) {
-                locatorValue = value.toString();
-            } else {
+            value = currentMap.get(keys[i]);
+            if (i < keys.length - 1) {
                 currentMap = (Map<String, Object>) value;
             }
         }
-        return locatorValue;
+
+        if (value instanceof Map) {
+            Map<String, String> platformMap = (Map<String, String>) value;
+            String platform = Config.getPlatformName();
+            return platformMap.getOrDefault(platform, platformMap.getOrDefault("android", ""));
+        }
+
+        return value != null ? value.toString() : "";
     }
 
     @SuppressWarnings("unchecked")
     public static By getLocator(String key) {
-        String[] keys = key.split("\\.");
-        Map<String, Object> currentMap = locators;
-        String locatorValue = "";
+        String locatorValue = getLocatorValue(key);
 
-        for (int i = 0; i < keys.length; i++) {
-            Object value = currentMap.get(keys[i]);
-            if (i == keys.length - 1) {
-                locatorValue = value.toString();
-            } else {
-                currentMap = (Map<String, Object>) value;
-            }
+        if (locatorValue.isEmpty()) {
+            throw new RuntimeException("Locator not found for key: " + key);
         }
 
         if (locatorValue.startsWith("//") || locatorValue.startsWith("(")) {
@@ -75,8 +73,8 @@ public class YamlReader {
             return By.name(locatorValue.substring(5));
         } else if (locatorValue.startsWith("accessibility=")) {
             // Note: For Appium, this is usually MobileBy.AccessibilityId or By.ByAccessibilityId
-            // But since we are using standard By, we might need to handle it depending on what's available
-            return By.xpath("//*[@content-desc='" + locatorValue.substring(14) + "']");
+            // In java-client 7.6.0, we can use MobileBy.AccessibilityId
+            return io.appium.java_client.MobileBy.AccessibilityId(locatorValue.substring(14));
         } else {
             return By.xpath(locatorValue); // Default to xpath
         }
