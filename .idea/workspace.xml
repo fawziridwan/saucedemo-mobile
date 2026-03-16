@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f15aec7-56d9-4167-b2b7-d84a7742e956" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/LoginStep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/utils/ApplicationUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/features/Login.feature" afterDir="false" />
+    <list default="true" id="1f15aec7-56d9-4167-b2b7-d84a7742e956" name="Changes" comment="Enhance flow&#10;- Purchase.feature (for e2e flow)&#10;- Login.feature (for positive/negative flow)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/CartPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/CheckoutPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/ProductsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/ProductsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/runner/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/runner/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/PurchaseStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/PurchaseStep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Purchase.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/Purchase.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,11 +102,37 @@
       <option name="project" value="LOCAL" />
       <updated>1773508029835</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="enhance feature by adding the helper : &#10;- ApplicationUtils.java">
+      <option name="closed" value="true" />
+      <created>1773532976297</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1773532976297</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Enhance flow&#10;- Purchase.feature (for e2e flow)&#10;- Login.feature (for positive/negative flow)">
+      <option name="closed" value="true" />
+      <created>1773533075596</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1773533075596</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Enhance flow&#10;- Purchase.feature (for e2e flow)&#10;- Login.feature (for positive/negative flow)">
+      <option name="closed" value="true" />
+      <created>1773533142509</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1773533142509</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="enhance feature by adding the helper : &#10;- ApplicationUtils.java" />
+    <MESSAGE value="Enhance flow&#10;- Purchase.feature (for e2e flow)&#10;- Login.feature (for positive/negative flow)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance flow&#10;- Purchase.feature (for e2e flow)&#10;- Login.feature (for positive/negative flow)" />
   </component>
 </project>
