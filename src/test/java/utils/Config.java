@@ -5,6 +5,9 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -27,13 +30,13 @@ public class Config {
         InputStream input = new FileInputStream(currentDir + "\\" + A);
         prop.load(input);
 
-        String deviceName = prop.getProperty("deviceName");
+        String deviceName = prop.getProperty("device.name");
         String udid = prop.getProperty("udid");
-        String platformName = prop.getProperty("platformName");
-        String appPackage = prop.getProperty("appPackage");
-        String appActivity = prop.getProperty("appActivity");
-        String automationName = prop.getProperty("automationName");
-        String platformVersion = prop.getProperty("platformVersion");
+        String platformName = prop.getProperty("platform.name");
+        String appPackage = prop.getProperty("app.package");
+        String appActivity = prop.getProperty("app.activity");
+        String automationName = prop.getProperty("automation.name");
+        String platformVersion = prop.getProperty("platform.version");
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
@@ -54,7 +57,11 @@ public class Config {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
         driver.quit();
     }
 
