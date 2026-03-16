@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- report theme -->
+        <theme>dark</theme>
+        <!-- document title -->
+        <documentTitle>Sauce Demo Mobile Test Report</documentTitle>
+        <!-- report name -->
+        <reportName>Automation Test Results</reportName>
+        <!-- char set -->
+        <encoding>utf-8</encoding>
+        <!-- time format -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+        <!-- custom scripts -->
+        <scripts>
+            <![CDATA[
+                $(document).ready(function() {
+                    // Custom JS
+                });
+            ]]>
+        </scripts>
+        <!-- custom styles -->
+        <styles>
+            <![CDATA[
+                .brand-logo { display: none; }
+            ]]>
+        </styles>
+    </configuration>
+</extentreports>

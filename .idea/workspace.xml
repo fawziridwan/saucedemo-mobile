@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1f15aec7-56d9-4167-b2b7-d84a7742e956" name="Changes" comment="Enhance flow&#10;- Purchase.feature (for e2e flow)&#10;- Login.feature (for positive/negative flow)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/runner/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/runner/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +47,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TestNG.TestRunner.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "feature/report",
     "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "terminal"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
