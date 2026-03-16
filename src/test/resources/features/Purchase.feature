@@ -3,7 +3,7 @@ Feature: Product Purchase
   I want to purchase products
   So that I can complete my shopping
 
-  @purchase
+  @regression
   Scenario: Purchase Sauce Labs Backpack and Bike Light
     Given I am on the login screen
     And I login with username "standard_user" and password "secret_sauce"

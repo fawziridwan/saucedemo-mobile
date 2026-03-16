@@ -1,0 +1,1 @@
+checkoutButton: "//android.view.ViewGroup[@content-desc='test-CHECKOUT']"

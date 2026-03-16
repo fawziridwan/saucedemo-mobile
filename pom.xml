@@ -73,6 +73,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- YAML Reader -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.33</version>
+        </dependency>
+
         <!-- Lombok for Java 17 compatibility -->
         <dependency>
             <groupId>org.projectlombok</groupId>

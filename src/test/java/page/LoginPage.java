@@ -7,20 +7,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.ApplicationUtils;
 import utils.Config;
+import utils.YamlReader;
 
 public class LoginPage {
     WebDriverWait wait;
     private WebDriver driver;
     public ApplicationUtils applicationUtils;
 
-    private final By usernameField = By.xpath("//android.widget.EditText[@content-desc='test-Username']");
-    private final By passwordField = By.xpath("//android.widget.EditText[@content-desc='test-Password']");
-    private final By loginButton = By.xpath("//android.widget.TextView[@text='LOGIN']");
-    private final By logoSwaglab = By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView[2]");
-    private final By titleProduct = By.xpath("//android.widget.TextView[@text='PRODUCTS']");
+    private final By usernameField = YamlReader.getLocator("LoginPage.usernameField");
+    private final By passwordField = YamlReader.getLocator("LoginPage.passwordField");
+    private final By loginButton = YamlReader.getLocator("LoginPage.loginButton");
+    private final By logoSwaglab = YamlReader.getLocator("LoginPage.logoSwaglab");
+    private final By titleProduct = YamlReader.getLocator("LoginPage.titleProduct");
 
     // message validation
-    private final By errorMessageContainer = By.xpath("//android.view.ViewGroup[@content-desc='test-Error message']//android.widget.TextView");
+    private final By errorMessageContainer = YamlReader.getLocator("LoginPage.errorMessageContainer");
 
     @SuppressWarnings("rawtypes")
     public LoginPage() {

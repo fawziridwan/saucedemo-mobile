@@ -3,7 +3,7 @@ Feature: Login Swag Labs
   I want to logged in
   So that I can purchase products
 
-  @login
+  @regression
   Scenario Outline: Validate input Username or Password
     Given I am on login screen
     And I logged in with "<username>" and "<password>"
@@ -15,7 +15,7 @@ Feature: Login Swag Labs
       | locked_out_user | secret_sauce | Sorry, this user has been locked out.                        |
       | invalid_user    | invalid_pass | Username and password do not match any user in this service. |
 
-  @login
+  @regression
   Scenario Outline: Logged in on Swag Labs
     Given I am on login screen
     And I logged in with "<username>" and "<password>"

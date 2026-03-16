@@ -1,0 +1,6 @@
+usernameField: "//android.widget.EditText[@content-desc='test-Username']"
+passwordField: "//android.widget.EditText[@content-desc='test-Password']"
+loginButton: "//android.widget.TextView[@text='LOGIN']"
+logoSwaglab: "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView[2]"
+titleProduct: "//android.widget.TextView[@text='PRODUCTS']"
+errorMessageContainer: "//android.view.ViewGroup[@content-desc='test-Error message']//android.widget.TextView"

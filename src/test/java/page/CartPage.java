@@ -5,12 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.ApplicationUtils;
 import utils.Config;
+import utils.YamlReader;
 
 public class CartPage {
     private WebDriver driver;
     private ApplicationUtils applicationUtils;
 
-    private final By checkoutButton = By.xpath("//android.view.ViewGroup[@content-desc='test-CHECKOUT']");
+    private final By checkoutButton = YamlReader.getLocator("CartPage.checkoutButton");
 
     @SuppressWarnings("rawtypes")
     public CartPage() {
