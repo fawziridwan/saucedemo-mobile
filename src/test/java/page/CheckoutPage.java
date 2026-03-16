@@ -5,17 +5,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.ApplicationUtils;
 import utils.Config;
+import utils.YamlReader;
 
 public class CheckoutPage {
     private WebDriver driver;
     private ApplicationUtils applicationUtils;
 
-    private final By firstNameField = By.xpath("//android.widget.EditText[@content-desc='test-First Name']");
-    private final By lastNameField = By.xpath("//android.widget.EditText[@content-desc='test-Last Name']");
-    private final By zipCodeField = By.xpath("//android.widget.EditText[@content-desc='test-Zip/Postal Code']");
-    private final By continueButton = By.xpath("//android.view.ViewGroup[@content-desc='test-CONTINUE']");
-    private final By finishButton = By.xpath("//android.view.ViewGroup[@content-desc='test-FINISH']");
-    private final By completionMessage = By.xpath("//android.widget.TextView[@text='CHECKOUT: COMPLETE!']");
+    private final By firstNameField = YamlReader.getLocator("CheckoutPage.firstNameField");
+    private final By lastNameField = YamlReader.getLocator("CheckoutPage.lastNameField");
+    private final By zipCodeField = YamlReader.getLocator("CheckoutPage.zipCodeField");
+    private final By continueButton = YamlReader.getLocator("CheckoutPage.continueButton");
+    private final By finishButton = YamlReader.getLocator("CheckoutPage.finishButton");
+    private final By completionMessage = YamlReader.getLocator("CheckoutPage.completionMessage");
 
     @SuppressWarnings("rawtypes")
     public CheckoutPage() {

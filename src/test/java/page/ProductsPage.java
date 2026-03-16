@@ -5,12 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.ApplicationUtils;
 import utils.Config;
+import utils.YamlReader;
 
 public class ProductsPage {
     private WebDriver driver;
     private ApplicationUtils applicationUtils;
 
-    private final By cartIcon = By.xpath("//android.view.ViewGroup[@content-desc='test-Cart']");
+    private final By cartIcon = YamlReader.getLocator("ProductsPage.cartIcon");
 
     @SuppressWarnings("rawtypes")
     public ProductsPage() {
@@ -23,7 +24,8 @@ public class ProductsPage {
         applicationUtils.scrollToText(productName);
         
         // Use a robust locator that finds the ADD TO CART button within the container of the specific product
-        String xpath = String.format("//android.view.ViewGroup[@content-desc='test-Item container' and .//android.widget.TextView[@text='%s']]//android.view.ViewGroup[@content-desc='test-ADD TO CART']", productName);
+        String xpathTemplate = YamlReader.getLocatorValue("ProductsPage.addToCartTemplate");
+        String xpath = String.format(xpathTemplate, productName);
         applicationUtils.tapElement(By.xpath(xpath), 15L);
     }
 

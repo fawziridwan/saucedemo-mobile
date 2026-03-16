@@ -1,0 +1,2 @@
+cartIcon: "//android.view.ViewGroup[@content-desc='test-Cart']"
+addToCartTemplate: "//android.view.ViewGroup[@content-desc='test-Item container' and .//android.widget.TextView[@text='%s']]//android.view.ViewGroup[@content-desc='test-ADD TO CART']"
